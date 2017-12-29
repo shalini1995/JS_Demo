@@ -1,0 +1,26 @@
+<html>
+<head><title></title></head>
+
+<body onload="changeText();">
+<div id=textRange></div><br>
+
+<script type=text/javascript>
+var delay="1"; //how many seconds you wnat the delay to be
+var count='0';
+var Texts=new Array();
+Texts[0]="what text you want to be displpayed first";
+Texts[1]="what text you want to be displayed second";
+Texts[2]="what text you want to be displayed third";
+function changeText(){
+document.getElementById('textRange').innerHTML=Texts[count];
+count++;
+if(count==Texts.length){count='0';}
+setTimeout("changeText()",delay*1000);
+}
+
+</script>
+
+
+
+</body>
+</html>

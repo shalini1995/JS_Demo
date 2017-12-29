@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="app.js"></script>
+	
+</head>
+<body onload="changeText()">
+	<div class="container">
+		<div ng-controller="HeaderCtrl">
+			<ul class="menu">
+  				<li><a href="#"><img src="images/Abraham.jpg"></a></li>
+  				<li class="left_arr"><a href="#"><img src="images/left_arr.png"></a></li>
+  				<li class="border"><a href="#">Accounts Overview</a></li>
+  				<li class="page"><a href="#">Pages Style</a></li>
+  				<li><a href="#"><img src="images/settings.jpg"></a></li>
+  				<li><a href="#"><img src="images/settings.jpg"></a></li>
+			</ul>
+			<div class="second">
+				<ul class="menu">
+  					<li class="balance"><a href="#">Balance</a></li>
+  					<li class="my_acc"><a href="#">My Accounts</a></li>
+  					<li><a href="#"><img src="images/icon.png"></a></li>
+  					<li><a href="#"><img src="images/icon.png"></a></li>
+  					<li><a href="#"><img src="images/icon.png"></a></li>
+  					<li class="arr"><a href="#"><img src="images/left_arr.png"></a></li>
+  					<!-- <li class="digit"><a href="#">01</a></li> -->
+  					<li>0<span>2</span></li>
+  					<li><a href="#">02</a></li>
+  					<li><a href="#"><img src="images/right_arr.png"></a></li>
+				</ul>
+			</div>
+      <div class="third">
+        <ul class="menu">
+          <li class="balance"><a href="#"><div id=textRangee></div></a></li>
+          <li><a href="#"><div id=textRange></div></a></li>
+          <li class="arrr"><a href="#"><img src="images/icon.png"></a></li>
+          <li><a href="#"><img src="images/icon.png"></a></li>
+          <li><a href="#"><img src="images/icon.png"></a></li>
+        </ul>
+      </div>
+      <div class="fourth">
+        <ul class="menu">
+          <li class="balance"><a href="#"><div id=textRan></div></a></li>
+          <li class="bal"><a href="#"><div id=textRann></div></a></li>
+          <li class="slider">
+            <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+                <div class="orbit-wrapper">
+                   <ul class="orbit-container">
+                        <li class="is-active orbit-slide">
+                            <img class="orbit-image slider-image" src="images/slider1.jpg" alt="Slider">
+                        </li>
+                        <li class="orbit-slide">
+                            <img class="orbit-image slider-image" src="images/slider2.jpg" alt="Slider">
+                        </li>
+                        <li class="orbit-slide">
+                            <img class="orbit-image slider-image" src="images/slider3.jpg" alt="Slider">
+                        </li>     
+                    </ul>
+                </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+       <div id="graph"></div>
+     <!--  <div>
+        <ul class="menu">
+          <li><canvas id="myCan" width="500" height="500"></canvas></li>
+      </div> -->
+		</div>
+   <!--  <div class="animate">
+      <span class=".integers">12345</span>
+      <span class=".floats">123.45</span>
+    </div> -->
+	</div>
+ 
+	<script src="js/jquery.js"></script>
+    <script src="js/what-input.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/foundation.js"></script>
+    <script type="text/javascript">
+      $(document).foundation();
+        jQuery(document).ready(function( $ ) {
+          $('span').counterUp({
+           delay: 10, // the delay time in ms
+            time: 2000 // the speed time in ms
+          });
+
+});
+
+var delay="1"; //how many seconds you wnat the delay to be
+var count='0';
+var countt='0';
+var counttt='0';
+var countttt='0';
+
+var Texts=new Array();
+Texts[0]="$14,345";
+Texts[1]="$107.35";
+
+var Text=new Array();
+Text[0]="BTC";
+Text[1]="ETH";
+
+var Tex=new Array();
+Tex[0]="$1034.6743";
+Tex[1]="$4056.8952";
+
+var Te=new Array();
+Te[0]="50%";
+Te[1]="30%";
+
+function changeText(){
+
+document.getElementById('textRange').innerHTML=Texts[count];
+count++;
+if(count==Texts.length){count='0';}
+setTimeout("changeText()",delay*1000);
+
+document.getElementById('textRangee').innerHTML=Text[countt];
+countt++;
+if(countt==Text.length){countt='0';}
+
+document.getElementById('textRan').innerHTML=Tex[counttt];
+counttt++;
+if(counttt==Tex.length){counttt='0';}
+
+document.getElementById('textRann').innerHTML=Te[countttt];
+countttt++;
+if(countttt==Tex.length){countttt='0';}
+}
+
+window.requestAnimationFrame = window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.msRequestAnimationFrame ||
+function(f) {
+  return setTimeout(f, 1000 / 60)
+};
+
+/*var canvas = document.getElementById("myCan");
+var ctx = canvas.getContext("2d");
+var startTime = new Date().getTime();
+
+function getPath(height) {
+  var width = canvas.width;
+  var spacing = 0.08;
+  var loopNum = 0;
+  var pointList = [];
+  var i = 0;
+
+  for (i = 0; i < width / 2; i++) {
+    pointList[loopNum] = [loopNum, Math.sin(loopNum * spacing) * (i * height) + 100];
+    loopNum++;
+  }
+  for (i = width / 2; i > 0; i--) {
+     pointList[loopNum] = [loopNum, Math.sin(loopNum * spacing) * (i * height) + 100];
+     loopNum++;
+  }
+  return pointList;
+}
+
+function draw() {
+  var currentTime = new Date().getTime();
+  var runTime = currentTime - startTime;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "rgb(80, 100, 230)";
+
+  var height = Math.sin(runTime * 0.008) * 0.2;
+  var pointList = getPath(height);
+
+  for (var i = 0; i < 500; i++) {
+    if (i === 0) {
+      ctx.moveTo(pointList[0][0], pointList[0][1]);
+    } else {
+      ctx.lineTo(pointList[i][0], pointList[i][1]);
+    }
+  }
+  ctx.stroke();
+
+  window.requestAnimationFrame(draw);
+}
+
+window.requestAnimationFrame(draw);*/
+
+  // don't try to learn anything from the code, it's a
+// series of hacks. this one's all about the visuals.
+// - @hakimel
+/*window.onload = function() {*/
+var LineChart = function( options ) {
+
+  var data = options.data;
+  var graph=document.querySelector("#graph");
+  var canvas = graph.appendChild( document.createElement( 'canvas' ) );
+  var context = canvas.getContext( '2d' );
+
+  var rendering = false,
+      paddingX = 40,
+      paddingY = 40,
+      /*width = options.width || window.innerWidth,
+      height = options.height || window.innerHeight,*/
+      width = 1300;
+      height = 200;
+      progress = 0;
+
+  canvas.width = width;
+  canvas.height = height;
+
+  var maxValue,
+      minValue;
+
+  var y1 = paddingY + ( 0.05 * ( height - ( paddingY * 2 ) ) ),
+      y2 = paddingY + ( 0.50 * ( height - ( paddingY * 2 ) ) ),
+      y3 = paddingY + ( 0.95 * ( height - ( paddingY * 2 ) ) );
+  
+  format();
+  render();
+  
+  function format( force ) {
+
+    maxValue = 0;
+    minValue = Number.MAX_VALUE;
+    
+    data.forEach( function( point, i ) {
+      maxValue = Math.max( maxValue, point.value );
+      minValue = Math.min( minValue, point.value );
+    } );
+
+    data.forEach( function( point, i ) {
+      point.targetX = paddingX + ( i / ( data.length - 1 ) ) * ( width - ( paddingX * 2 ) );
+      point.targetY = paddingY + ( ( point.value - minValue ) / ( maxValue - minValue ) * ( height - ( paddingY * 2 ) ) );
+      point.targetY = height - point.targetY;
+  
+      if( force || ( !point.x && !point.y ) ) {
+        point.x = point.targetX + 30;
+        point.y = point.targetY;
+        point.speed = 0.04 + ( 1 - ( i / data.length ) ) * 0.05;
+      }
+    } );
+    
+  }
+
+  function render() {
+
+    if( !rendering ) {
+      requestAnimationFrame( render );
+      return;
+    }
+    
+    context.font = '10px sans-serif';
+    context.clearRect( 0, 0, width, height );
+
+    context.fillStyle = '#222';
+    context.fillRect( paddingX, y1, width - ( paddingX * 2 ), 1 );
+    context.fillRect( paddingX, y2, width - ( paddingX * 2 ), 1 );
+    context.fillRect( paddingX, y3, width - ( paddingX * 2 ), 1 );
+    
+    if( options.yAxisLabel ) {
+      context.save();
+      context.globalAlpha = progress;
+      context.translate( paddingX - 15, height - paddingY - 10 );
+      context.rotate( -Math.PI / 2 );
+      context.fillStyle = '#fff';
+      context.fillText( options.yAxisLabel, 0, 0 );
+      context.restore();
+    }
+
+    var progressDots = Math.floor( progress * data.length );
+    var progressFragment = ( progress * data.length ) - Math.floor( progress * data.length );
+
+    data.forEach( function( point, i ) {
+      if( i <= progressDots ) {
+        point.x += ( point.targetX - point.x ) * point.speed;
+        point.y += ( point.targetY - point.y ) * point.speed;
+
+        context.save();
+        
+        var wordWidth = context.measureText( point.label ).width;
+        context.globalAlpha = i === progressDots ? progressFragment : 1;
+        context.fillStyle = point.future ? '#aaa' : '#fff';
+        context.fillText( point.label, point.x - ( wordWidth / 2 ), height - 18 );
+
+        if( i < progressDots && !point.future ) {
+          context.beginPath();
+          context.arc( point.x, point.y, 4, 0, Math.PI * 2 );
+          context.fillStyle = '#1baee1';
+          context.fill();
+        }
+
+        context.restore();
+      }
+
+    } );
+
+    context.save();
+    context.beginPath();
+    context.strokeStyle = '#1baee1';
+    context.lineWidth = 2;
+
+    var futureStarted = false;
+
+    data.forEach( function( point, i ) {
+
+      if( i <= progressDots ) {
+
+        var px = i === 0 ? data[0].x : data[i-1].x,
+            py = i === 0 ? data[0].y : data[i-1].y;
+
+        var x = point.x,
+            y = point.y;
+
+        if( i === progressDots ) {
+          x = px + ( ( x - px ) * progressFragment );
+          y = py + ( ( y - py ) * progressFragment );
+        }
+
+        if( point.future && !futureStarted ) {
+          futureStarted = true;
+
+          context.stroke();
+          context.beginPath();
+          context.moveTo( px, py );
+          context.strokeStyle = '#aaa';
+
+          if( typeof context.setLineDash === 'function' ) {
+            context.setLineDash( [2,3] );
+          }
+        }
+
+        if( i === 0 ) {
+          context.moveTo( x, y );
+        }
+        else {
+          context.lineTo( x, y );
+        }
+
+      }
+
+    } );
+
+    context.stroke();
+    context.restore();
+
+    progress += ( 1 - progress ) * 0.02;
+  
+    requestAnimationFrame( render );
+
+  }
+  
+  this.start = function() {
+    rendering = true;
+  }
+  
+  this.stop = function() {
+    rendering = false;
+    progress = 0;
+    format( true );
+  }
+  
+  this.restart = function() {
+    this.stop();
+    this.start();
+  }
+  
+  this.append = function( points ) {    
+    progress -= points.length / data.length;
+    data = data.concat( points );
+    
+    format();
+  }
+  
+  this.populate = function( points ) {    
+    progress = 0;
+    data = points;
+    
+    format();
+  }
+
+};
+
+var chart = new LineChart({ data: [] });
+
+reset();
+
+chart.start();
+
+function append() {
+  chart.append([
+    { label: 'Rnd', value: 1300 + ( Math.random() * 1500 ), future: true }
+  ]);
+}
+
+function restart() {
+  chart.restart();
+}
+
+function reset() {
+  chart.populate([
+    { label: 'Jan', value: 0 },
+    { label: 'Feb', value: 840 },
+    { label: 'Mar', value: 690 },
+    { label: 'Apr', value: 500 },
+    { label: 'May', value: 120 },
+    { label: 'Jun', value: 350 },
+    { label: 'Jul', value: 1200 },
+    { label: 'Aug', value: 50 },
+    { label: 'Sep', value: 460 },
+    { label: 'Oct', value: 800 },
+    { label: 'Nov', value: 1200/*, future: true*/ },
+    { label: 'Dec', value: 1400/*, future: true*/ }
+  ]);
+}
+/*}*/
+
+    </script>
+    <script src="jquery.counterup.min.js"></script>
+    <script src="jquery.waypoints.min.js"></script>
+</body>
+
+</html>
+
+<!-- <html>
+<head><title></title></head>
+
+<body onload="changeText();">
+<div id=textRange></div><br>
+
+<script type=text/javascript>
+var delay="1"; //how many seconds you wnat the delay to be
+var count='0';
+var Texts=new Array();
+Texts[0]="what text you want to be displpayed first";
+Texts[1]="what text you want to be displayed second";
+Texts[2]="what text you want to be displayed third";
+function changeText(){
+document.getElementById('textRange').innerHTML=Texts[count];
+count++;
+if(count==Texts.length){count='0';}
+setTimeout("changeText()",delay*1000);
+}
+
+</script>
+
+
+
+</body>
+</html> -->
